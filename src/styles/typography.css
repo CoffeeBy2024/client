@@ -1,0 +1,17 @@
+@tailwind components;
+
+@layer components {
+  .title-1 {
+    @apply text-2xl;
+  }
+  .footer-1 {
+    @apply text-2xl text-white;
+  }
+  .nav-link {
+    @apply text-xl uppercase text-amber-900;
+  }
+
+  .nav-link__active {
+    @apply text-xl uppercase text-amber-700 underline;
+  }
+}

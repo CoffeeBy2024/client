@@ -1,0 +1,15 @@
+@tailwind components;
+
+@layer components {
+  .contained {
+    @apply rounded bg-amber-600 text-white;
+  }
+
+  .small {
+    @apply text-base;
+  }
+
+  .medium {
+    @apply px-5 py-3 text-xl;
+  }
+}

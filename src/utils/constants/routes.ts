@@ -21,7 +21,7 @@ export const ROUTES = {
   },
 };
 
-export const AUTH_ROUTES = {
+export const USER_AUTH_ROUTES = {
   ROOT: {
     id: 'home',
     name: 'home',

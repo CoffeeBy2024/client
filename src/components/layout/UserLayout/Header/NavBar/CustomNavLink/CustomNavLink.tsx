@@ -1,3 +1,4 @@
+import { Lato } from 'next/font/google';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -11,13 +12,15 @@ interface ICustomNavLinkProps
   path: string;
 }
 
+const lato = Lato({ weight: '700', subsets: ['latin'], style: 'normal' });
+
 const CustomNavLink = ({ path, children, ...props }: ICustomNavLinkProps) => {
   const currentPath = usePathname();
 
   const isActive = currentPath === path;
   const variant = isActive ? 'nav-link__active' : 'nav-link';
   return (
-    <Typography tag="span" variant={variant}>
+    <Typography className={lato.className} tag="span" variant={variant}>
       <Link href={path} prefetch={false} {...props}>
         {children}
       </Link>

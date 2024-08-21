@@ -1,5 +1,5 @@
 import { UserLayout } from '@/components';
-import { SignInView } from '@/modules';
+import { SignInView } from '@/features';
 
 import type { NextPageWithLayout } from '../_app';
 

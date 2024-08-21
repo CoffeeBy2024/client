@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
 
-import { AuthProvider } from '@/context/AuthContext';
+import { AuthProvider } from '@/shared/context/AuthContext';
 import { checkAuth } from '@/utils/helpers';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {

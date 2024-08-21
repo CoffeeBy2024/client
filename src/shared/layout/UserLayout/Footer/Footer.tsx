@@ -6,7 +6,7 @@ const TEXT = {
 
 const Footer = () => {
   return (
-    <footer className="bg-amber-950">
+    <footer className="bg-[#543310]">
       <Container className="flex items-center justify-center py-3">
         <Typography tag="p" variant="footer-1">
           {TEXT.APP_YEAR_CREATION}

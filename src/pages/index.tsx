@@ -1,5 +1,5 @@
 import { UserLayout } from '@/components';
-import { HomeView } from '@/modules';
+import { HomeView } from '@/features';
 
 import type { NextPageWithLayout } from './_app';
 

@@ -1,5 +1,5 @@
 import { UserLayout } from '@/components';
-import { NotFoundView } from '@/modules';
+import { NotFoundView } from '@/features';
 
 import type { NextPageWithLayout } from './_app';
 

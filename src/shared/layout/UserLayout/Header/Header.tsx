@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Container, Logo } from '@/components';
+import { Container, Logo } from '@/shared/ui';
 import { ROUTES } from '@/utils/constants';
 
 import { NavBar } from './NavBar/NavBar';

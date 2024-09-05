@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 
-import { UserLayout } from '@/components';
 import { UserProfileView } from '@/features';
+import { UserLayout } from '@/shared/layout';
 import { ROUTES } from '@/utils/constants';
 import { checkAuth } from '@/utils/helpers';
 

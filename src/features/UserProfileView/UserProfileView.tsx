@@ -1,4 +1,4 @@
-import { Typography } from '@/components';
+import { Typography } from '@/shared/ui';
 
 const TEXT = {
   H1: 'user profile page',

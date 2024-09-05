@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button, Typography, Container } from '@/components';
+import { Button, Typography, Container } from '@/shared/ui';
 import { ROUTES } from '@/utils/constants';
 import { useAuth } from '@/utils/hooks';
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button, Container, Typography } from '@/components';
+import { Button, Container, Typography } from '@/shared/ui';
 import { ROUTES } from '@/utils/constants';
 
 const TEXT = {

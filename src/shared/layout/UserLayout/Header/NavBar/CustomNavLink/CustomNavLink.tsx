@@ -2,7 +2,7 @@ import { Lato } from 'next/font/google';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Typography } from '@/components';
+import { Typography } from '@/shared/ui';
 
 interface ICustomNavLinkProps
   extends Omit<

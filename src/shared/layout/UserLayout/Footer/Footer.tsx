@@ -1,4 +1,4 @@
-import { Container, Typography } from '@/components';
+import { Container, Typography } from '@/shared/ui';
 
 const TEXT = {
   APP_YEAR_CREATION: 2024,

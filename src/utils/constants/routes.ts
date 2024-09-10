@@ -1,3 +1,7 @@
+export const URL = {
+  SERVER: 'http://localhost:3001',
+};
+
 export const ROUTES = {
   ROOT: {
     id: 'home',

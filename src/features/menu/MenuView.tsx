@@ -1,18 +1,16 @@
-import { Category } from '@/features/menu/components/Category';
-import { Search as SearchBar } from '@/features/menu/components/SearchBar';
 import { Shops } from '@/features/menu/components/Shops';
-import { StateBar } from '@/features/menu/components/StateBar';
+import { MenuType } from '@/pages/menu';
 
-const MenuView = () => {
+import { StateBar } from './components/StateBar/StateBar';
+
+const MenuView = ({ data }: MenuType) => {
   return (
-    <div className="flex h-full">
-      <div className="mr-2 flex flex-[2] flex-col">
-        <SearchBar />
-        <Category />
+    <div className="flex h-full flex-col">
+      <div className="flex flex-grow-[1]">
+        <StateBar data={data.categories} />
       </div>
-      <div className="flex flex-[6] flex-col">
-        <StateBar />
-        <Shops />
+      <div className="flex flex-grow-[50]">
+        <Shops data={data.shops} />
       </div>
     </div>
   );

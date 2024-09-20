@@ -2,9 +2,12 @@ import clsx from 'clsx';
 
 type TypographyVariant =
   | 'title-1'
+  | 'title-form-section'
   | 'footer-1'
   | 'nav-link'
-  | 'nav-link__active';
+  | 'nav-link__active'
+  | 'input-error-message';
+
 type TypographyTag =
   | 'h1'
   | 'h2'

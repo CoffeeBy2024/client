@@ -5,11 +5,15 @@
     @apply rounded bg-amber-600 text-white;
   }
 
+  .filled {
+    @apply rounded border border-amber-600 text-amber-600;
+  }
+
   .small {
     @apply text-base;
   }
 
   .medium {
-    @apply px-5 py-3 text-xl;
+    @apply px-5 py-2 text-xl;
   }
 }

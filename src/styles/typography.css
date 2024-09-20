@@ -2,8 +2,15 @@
 
 @layer components {
   .title-1 {
-    @apply text-2xl;
+    @apply text-3xl;
   }
+
+  .title-form-section {
+    @apply mb-4 flex items-center justify-center gap-1 text-center text-lg;
+    @apply before:flex-1 before:translate-y-1/2 before:border before:border-gray-300 before:content-[''];
+    @apply after:flex-1 after:translate-y-1/2 after:border after:border-gray-300 after:content-[''];
+  }
+
   .footer-1 {
     @apply text-2xl text-white;
   }
@@ -13,5 +20,9 @@
 
   .nav-link__active {
     @apply text-xl uppercase text-amber-700 underline;
+  }
+
+  .input-error-message {
+    @apply text-red-400;
   }
 }

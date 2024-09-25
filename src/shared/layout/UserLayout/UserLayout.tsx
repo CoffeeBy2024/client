@@ -1,3 +1,5 @@
+import { useAuth } from '@/utils/hooks';
+
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 
@@ -6,11 +8,19 @@ interface IUserLayoutProps {
 }
 
 const UserLayout = ({ children }: IUserLayoutProps) => {
+  const { isFirstLoad } = useAuth();
+
   return (
     <div className="flex h-screen flex-col">
-      <Header />
-      <main className="grow bg-slate-50">{children}</main>
-      <Footer />
+      {isFirstLoad ? (
+        <div>Loading</div>
+      ) : (
+        <>
+          <Header />
+          <main className="grow bg-slate-50">{children}</main>
+          <Footer />
+        </>
+      )}
     </div>
   );
 };

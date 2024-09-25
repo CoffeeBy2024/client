@@ -3,7 +3,13 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Typography, FormInput, PasswordInput } from '@/shared/ui';
+import {
+  Button,
+  Typography,
+  FormInput,
+  PasswordInput,
+  AuthFormRootError,
+} from '@/shared/ui';
 import { isFieldRequired } from '@/utils/helpers';
 import { useAuth } from '@/utils/hooks';
 
@@ -13,6 +19,7 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<signUpInputs>({
     mode: 'onBlur',
@@ -31,9 +38,13 @@ const SignUpForm = () => {
       router.push('/');
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        console.error('Status:', err.status);
-        console.error('Message:', err.message);
+        setError('root', {
+          message: err.response?.data.message,
+        });
       } else {
+        setError('root', {
+          message: 'Something went wrong :(',
+        });
         console.error('Unexpected Error:', err);
       }
     }
@@ -44,6 +55,9 @@ const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="mb-2 flex flex-col items-center gap-5"
     >
+      {errors.root && (
+        <AuthFormRootError>{errors.root.message}</AuthFormRootError>
+      )}
       <div className="flex flex-col items-center gap-8">
         <section>
           <Typography tag="h2" variant="title-form-section">

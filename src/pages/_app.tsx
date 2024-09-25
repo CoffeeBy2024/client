@@ -4,8 +4,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
 
-import { AuthProvider } from '@/shared/context/AuthContext';
-import { checkAuth } from '@/utils/helpers';
+import { AuthProvider } from '@/shared/context';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -15,24 +14,10 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-type MyAppProps = AppPropsWithLayout & {
-  initialAuthState: boolean;
-};
-
-function MyApp({ Component, pageProps, initialAuthState }: MyAppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return (
-    <AuthProvider initialAuthState={initialAuthState}>
-      {getLayout(<Component {...pageProps} />)}
-    </AuthProvider>
-  );
+  return <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>;
 }
-
-MyApp.getInitialProps = async () => {
-  const initialAuthState = await checkAuth();
-
-  return { initialAuthState };
-};
 
 export default MyApp;

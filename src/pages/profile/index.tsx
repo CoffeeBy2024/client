@@ -3,14 +3,14 @@ import { GetServerSideProps } from 'next';
 import { UserProfileView } from '@/features';
 import { UserLayout } from '@/shared/layout';
 import { ROUTES } from '@/utils/constants';
-import { checkAuth } from '@/utils/helpers';
+import { checkAuthGSSP } from '@/utils/helpers';
 
 import { NextPageWithLayout } from '../_app';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const isAuthenticated = await checkAuth();
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const isAuthorized = await checkAuthGSSP(context);
 
-  if (!isAuthenticated) {
+  if (!isAuthorized) {
     return {
       redirect: {
         destination: ROUTES.SIGN_IN.path,

@@ -1,16 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, Typography } from '@/shared';
-import { FormInput } from '@/shared/ui/Fields/FormInput/FormInput';
-import { PasswordInput } from '@/shared/ui/Fields/PasswordInput/PasswordInput';
+import { Button, Typography, FormInput, PasswordInput } from '@/shared/ui';
+import { isFieldRequired } from '@/utils/helpers';
+import { useAuth } from '@/utils/hooks';
 
-import {
-  isFieldRequired,
-  signUpInputs,
-  signUpSchema,
-  signUpSchemaShape,
-} from './schema';
+import { signUpInputs, signUpSchema, signUpSchemaShape } from './schema';
 
 const SignUpForm = () => {
   const {
@@ -23,10 +20,25 @@ const SignUpForm = () => {
     resolver: zodResolver(signUpSchema),
   });
 
+  const router = useRouter();
+  const { registerUser, loginUser } = useAuth();
+
   const onSubmit: SubmitHandler<signUpInputs> = async (data) => {
-    await new Promise((res) => setTimeout(res, 1000));
-    console.log(data);
+    try {
+      const { email, password } = data;
+      await registerUser(data);
+      await loginUser({ email, password });
+      router.push('/');
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        console.error('Status:', err.status);
+        console.error('Message:', err.message);
+      } else {
+        console.error('Unexpected Error:', err);
+      }
+    }
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

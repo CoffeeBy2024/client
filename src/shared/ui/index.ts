@@ -5,3 +5,4 @@ export * from './Typography/Typography';
 export * from './Icons';
 export * from './Shop/Shop';
 export * from './Fields';
+export * from './AuthFormRootError/AuthFormRootError';

@@ -3,7 +3,12 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button, FormInput, PasswordInput } from '@/shared/ui';
+import {
+  AuthFormRootError,
+  Button,
+  FormInput,
+  PasswordInput,
+} from '@/shared/ui';
 import { isFieldRequired } from '@/utils/helpers';
 import { useAuth } from '@/utils/hooks';
 
@@ -13,6 +18,7 @@ const SignInForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<SignInInputs>({
     mode: 'onBlur',
@@ -29,9 +35,13 @@ const SignInForm = () => {
       router.push('/');
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        console.error('Status:', err.status);
-        console.error('Message:', err.message);
+        setError('root', {
+          message: err.response?.data.message,
+        });
       } else {
+        setError('root', {
+          message: 'Something went wrong :(',
+        });
         console.error('Unexpected Error:', err);
       }
     }
@@ -42,6 +52,9 @@ const SignInForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="mb-2 flex flex-col items-center gap-5"
     >
+      {errors.root && (
+        <AuthFormRootError>{errors.root.message}</AuthFormRootError>
+      )}
       <section className="flex flex-col gap-5">
         <FormInput
           useFormRegisterReturn={{

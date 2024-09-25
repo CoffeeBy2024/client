@@ -28,7 +28,7 @@ const SignInView = () => {
           <hr className="w-full" />
           <Button
             size="medium"
-            variant="contained"
+            variant="outlined"
             className="flex items-center gap-2"
           >
             <FcGoogle />

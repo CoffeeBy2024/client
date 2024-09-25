@@ -27,7 +27,7 @@ const SignUpView = () => {
           <hr className="w-full" />
           <Button
             size="medium"
-            variant="filled"
+            variant="outlined"
             className="flex items-center gap-2"
           >
             <FcGoogle />

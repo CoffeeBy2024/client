@@ -30,7 +30,7 @@ const UserProfileView = () => {
       <Typography tag="h1" variant="title-1">
         {TEXT.H1}
       </Typography>
-      <Button variant="contained" size="medium" onClick={onLogoutClick}>
+      <Button variant="filled" size="medium" onClick={onLogoutClick}>
         {TEXT.BTN_LOGOUT}
       </Button>
     </Container>

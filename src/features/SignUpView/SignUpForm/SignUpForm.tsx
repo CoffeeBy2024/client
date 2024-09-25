@@ -111,7 +111,7 @@ const SignUpForm = () => {
         </section>
       </div>
       <Button
-        variant="contained"
+        variant="filled"
         size="medium"
         type="submit"
         disabled={isSubmitting}

@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import { UserProfileView } from '@/features';
 import { UserLayout } from '@/shared/layout';
 import { ROUTES } from '@/utils/constants';
-import { checkAuthGSSP } from '@/utils/helpers';
+import { checkAuthGSSP } from '@/utils/helpers/auth';
 
 import { NextPageWithLayout } from '../_app';
 

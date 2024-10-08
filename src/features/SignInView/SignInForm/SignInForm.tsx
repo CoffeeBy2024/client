@@ -9,7 +9,7 @@ import {
   FormInput,
   PasswordInput,
 } from '@/shared/ui';
-import { isFieldRequired } from '@/utils/helpers';
+import { isFieldRequired } from '@/utils/helpers/auth';
 import { useAuth } from '@/utils/hooks';
 
 import { SignInInputs, signInSchema, signInSchemaShape } from './schema';

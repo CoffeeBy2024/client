@@ -10,7 +10,7 @@ import {
   PasswordInput,
   AuthFormRootError,
 } from '@/shared/ui';
-import { isFieldRequired } from '@/utils/helpers';
+import { isFieldRequired } from '@/utils/helpers/auth';
 import { useAuth } from '@/utils/hooks';
 
 import { signUpInputs, signUpSchema, signUpSchemaShape } from './schema';

@@ -1,0 +1,13 @@
+@tailwind components;
+
+@layer components {
+  .autofill-text:-webkit-autofill {
+    -webkit-text-fill-color: #78350f;
+  }
+
+  .text-input {
+    @apply text-amber-900;
+    @apply autofill-text; /* set text colour*/
+    @apply autofill:shadow-[inset_0_0_0px_1000px_#fffbeb]; /* set 'background' colour*/
+  }
+}

@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { MdSearch as SearchIcon } from 'react-icons/md';
 
+import { Button } from '@/shared';
+
 export const SearchBar = () => {
   const router = useRouter();
 
@@ -26,9 +28,9 @@ export const SearchBar = () => {
         placeholder="Search"
         className="flex-1 bg-transparent outline-none"
       />
-      <button className="flex-none cursor-pointer">
+      <Button className="flex-none cursor-pointer">
         <SearchIcon size={24} />
-      </button>
+      </Button>
     </form>
   );
 };

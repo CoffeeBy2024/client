@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 
-type ButtonVariant = 'outlined' | 'filled';
+type ButtonVariant = 'outlined' | 'filled' | 'contained';
 type ButtonSize = 'small' | 'medium';
 
 interface IButtonProps extends React.ComponentProps<'button'> {

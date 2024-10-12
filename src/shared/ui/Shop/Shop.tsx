@@ -1,31 +1,38 @@
-import React from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
-export type ShopType = {
-  id: number;
-  name: string;
-  coordinates: {
-    type: string;
-    coordinates: number[];
-  };
-};
+import no_logo from '@/../public/no_logo.png';
+import { getPhoto } from '@/utils/helpers/photo/getPhoto';
 
-export const Shop = ({ data }: { data: ShopType }) => {
+
+export const Shop = ({ data }: { data: Shop }) => {
+  const [imageSrc, setImageSrc] = useState<string>('');
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      const fetchedImage = await getPhoto(data.photo);
+      if (fetchedImage) setImageSrc(`data:image/jpeg;base64,${fetchedImage}`);
+    };
+    fetchImage();
+  }, [data.photo]);
+
   return (
-    <div className="mx-auto w-full max-w-lg rounded-lg border border-gray-300 bg-white p-4 shadow-lg transition-shadow duration-200 hover:shadow-xl">
-      <h2 className="mb-2 text-xl font-semibold text-gray-800">{data.name}</h2>
-      <p className="mb-1 text-sm text-gray-600">
-        <strong>ID:</strong> {data.id}
-      </p>
-      <div>
-        <h3 className="mb-1 text-lg font-medium text-gray-700">Coordinates</h3>
-        <p className="text-sm text-gray-600">
-          <strong>Type:</strong> {data.coordinates.type}
+    <div className="flex min-w-0 gap-x-6 p-4 md:w-1/3">
+      <Image
+        src={imageSrc || no_logo}
+        alt="coffee_logo"
+        width={64}
+        height={64}
+        className="h-16 w-16 flex-none rounded-full bg-gray-50 object-cover"
+      />
+      <div className="min-w-0 flex-auto">
+        <p className="text-lg font-semibold leading-8 text-gray-900">
+          {data.name}
         </p>
-        <p className="text-sm text-gray-600">
-          <strong>Longitude:</strong> {data.coordinates.coordinates[0]}
-        </p>
-        <p className="text-sm text-gray-600">
-          <strong>Latitude:</strong> {data.coordinates.coordinates[1]}
+        <p className="mt-2 truncate text-sm leading-6 text-gray-500">
+          coordinates - {data.coordinates.coordinates[0]}
+          {','}
+          {data.coordinates.coordinates[1]}
         </p>
       </div>
     </div>

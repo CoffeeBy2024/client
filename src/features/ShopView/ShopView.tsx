@@ -9,7 +9,7 @@ import { WorkingHours } from '@/shared/ui/WorkingHours/WorkingHours';
 
 import { ProductList } from './components';
 
-const PopupModal = dynamic(() => import('./components/Product'));
+const ProductPopup = dynamic(() => import('./components/Product'));
 
 const ShopView = ({ data }: ShopPros) => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const ShopView = ({ data }: ShopPros) => {
         ))}
       </ul>
 
-      {isPopupOpen && <PopupModal product={product} onClose={closePopup} />}
+      {isPopupOpen && <ProductPopup product={product} onClose={closePopup} />}
     </div>
   );
 };

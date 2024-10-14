@@ -15,16 +15,13 @@ const MenuView = ({ data }: MenuProps) => {
       </div>
 
       <div className="flex flex-grow-[50]">
-        <ul role="list" className="divide-gray w-full divide-y">
+        <ul role="list" className="w-full divide-y divide-gray-200">
           {data.shops.map((item, index) => (
             <Link
               href={`${ROUTES.MENU.path}/shop/${item.name}_${item.id}`}
               key={index}
             >
-              <li
-                key={index}
-                className="flex cursor-pointer flex-col justify-between gap-6 py-5 md:flex-row md:items-start"
-              >
+              <li className="group mx-1 mb-2 flex cursor-pointer flex-col justify-between gap-6 rounded-lg border border-gray-300 p-6 shadow-md transition hover:shadow-lg md:flex-row md:items-start">
                 <Shop data={item} />
                 <WorkingHours data={data.working_hours[index]} />
                 <ProductCategories data={data.productCategories[index]} />

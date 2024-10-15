@@ -1,13 +1,18 @@
-import Link from 'next/link';
+import { useState } from 'react';
 
-import { Shop } from '@/shared';
-import { ProductCategories } from '@/shared/ui/ProductCategories/ProductCategories';
-import { WorkingHours } from '@/shared/ui/WorkingHours/WorkingHours';
-import { ROUTES } from '@/utils/constants';
+import { shopsPerPage } from '@/utils/constants';
 
-import { StateBar } from './components/StateBar/StateBar';
+import { PagginationBottom } from './components/PaginationBottom';
+import { ShopList } from './components/ShopList';
+import { StateBar } from './components/StateBar';
 
 const MenuView = ({ data }: MenuProps) => {
+  const [page, setPage] = useState<number>(1);
+
+  const getSelected = <T,>(arr: T[]): T[] => {
+    return arr.slice((page - 1) * shopsPerPage, page * shopsPerPage);
+  };
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-grow-[1]">
@@ -15,23 +20,19 @@ const MenuView = ({ data }: MenuProps) => {
       </div>
 
       <div className="flex flex-grow-[50]">
-        <ul role="list" className="divide-gray w-full divide-y">
-          {data.shops.map((item, index) => (
-            <Link
-              href={`${ROUTES.MENU.path}/shop/${item.name}_${item.id}`}
-              key={index}
-            >
-              <li
-                key={index}
-                className="flex cursor-pointer flex-col justify-between gap-6 py-5 md:flex-row md:items-start"
-              >
-                <Shop data={item} />
-                <WorkingHours data={data.working_hours[index]} />
-                <ProductCategories data={data.productCategories[index]} />
-              </li>
-            </Link>
-          ))}
-        </ul>
+        <ShopList
+          shops={getSelected(data.shops)}
+          working_hours={getSelected(data.working_hours)}
+          productCategories={getSelected(data.productCategories)}
+        />
+      </div>
+
+      <div>
+        <PagginationBottom
+          shops={data.shops.length}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>
   );

@@ -14,3 +14,9 @@ type ShopPros = {
     productCategories: CATEGORY[];
   };
 };
+
+interface ShopsProps {
+  shops: Shop[];
+  working_hours: WorkingHours[][];
+  productCategories: CATEGORY[][];
+}

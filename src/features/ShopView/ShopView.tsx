@@ -9,7 +9,7 @@ import { WorkingHours } from '@/shared/ui/WorkingHours/WorkingHours';
 
 import { ProductList } from './components';
 
-const ProductPopup = dynamic(() => import('./components/Product'));
+const ProductPopup = dynamic(() => import('./components/ProductPopup'));
 
 const ShopView = ({ data }: ShopPros) => {
   const router = useRouter();
@@ -36,15 +36,15 @@ const ShopView = ({ data }: ShopPros) => {
   };
 
   return (
-    <div className="space-y-6 p-6">
+    <>
       <div className="flex flex-col gap-6 md:flex-row md:items-start">
         <Shop data={data.shop} />
         <WorkingHours data={data.working_hours} />
       </div>
 
-      <ul role="list" className="w-full space-y-4 divide-y divide-gray-200">
+      <ul role="list" className="w-full space-y-4 pb-4">
         {data.productCategories.map((item, index) => (
-          <li key={index} className="pt-4">
+          <li key={index}>
             <ProductCategory data={item} />
             <ProductList
               data={{ id: data.shop.id, category: item, openPopup, setProduct }}
@@ -54,7 +54,7 @@ const ShopView = ({ data }: ShopPros) => {
       </ul>
 
       {isPopupOpen && <ProductPopup product={product} onClose={closePopup} />}
-    </div>
+    </>
   );
 };
 
